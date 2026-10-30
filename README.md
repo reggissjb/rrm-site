@@ -1,6 +1,6 @@
 # Site da RRM Advocacia — advrrm.com.br
 
-Site de uma página feito só com HTML, CSS e um pouco de JavaScript: sem frameworks e sem nenhuma etapa de compilação. É publicado pelo **GitHub Pages**.
+Site feito só com HTML, CSS e um pouco de JavaScript: sem frameworks e sem nenhuma etapa de compilação. É publicado pelo **GitHub Pages**.
 
 O site não coleta dados dos visitantes: não tem formulários, pixels, Google Analytics nem qualquer rastreamento. As fontes ficam no próprio site (pasta `fontes/`). O mapa do Google só carrega quando o visitante clica em **Mostrar mapa**.
 
@@ -8,11 +8,13 @@ O site não coleta dados dos visitantes: não tem formulários, pixels, Google A
 
 | Arquivo | Para que serve |
 |---|---|
-| `index.html` | A página do site, com todos os textos |
+| `index.html` | Página inicial: os dois painéis das áreas, Sobre o escritório, Como funciona o atendimento e Contato |
+| `servidor-publico.html` | Página da área de servidor público estadual aposentado |
+| `consumidor-bancario.html` | Página da área de Direito do Consumidor e Bancário |
 | `style.css` | Cores, fontes e layout |
-| `script.js` | Botão "Mostrar mapa" |
-| `logo-rrm.png` | Logotipo (aparece no rodapé e na prévia do link no WhatsApp e nas redes sociais) |
-| `fundo-escritorio.png` | Imagem de fundo do topo |
+| `script.js` | Menu do celular, botão fixo do WhatsApp e botão "Mostrar mapa" |
+| `logo-rrm.png` | Logotipo (aparece no cabeçalho, no rodapé e na prévia do link no WhatsApp e nas redes sociais) |
+| `fundo-escritorio.png` | Imagem do escritório, usada ao lado do texto "Sobre o escritório" (recortada no monograma RM) |
 | `fundo-escritorio.webp` | Cópia mais leve da imagem de fundo, carregada no lugar do PNG pelos navegadores atuais |
 | `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` | Ícones da aba do navegador e da tela do celular, feitos a partir do logotipo |
 | `rrm-icone.ico` | Ícone original enviado para o repositório (não é usado pela página) |
@@ -28,7 +30,18 @@ O site não coleta dados dos visitantes: não tem formulários, pixels, Google A
 3. Use Ctrl+F para achar o texto e altere apenas o que está entre as marcações, por exemplo entre `<p>` e `</p>`.
 4. Clique em **Commit changes**. O site se atualiza em cerca de 1 minuto.
 
+A faixa do alto, o cabeçalho com o menu e o rodapé se repetem nas três páginas (`index.html`, `servidor-publico.html` e `consumidor-bancario.html`). Se mudar algo neles, faça a mesma mudança nos três arquivos.
+
 Se mudar o endereço, o telefone ou o horário, altere também o bloco "Dados estruturados", no começo do `index.html`.
+
+### Fotos no fundo dos painéis (opcional)
+
+Hoje os dois painéis da página inicial usam uma textura escura desenhada pelo próprio site. Para usar fotos:
+
+1. Envie para a raiz do repositório os arquivos `servidor.jpg` e `consumidor.jpg`.
+2. No `style.css`, procure "Para usar fotos próprias" e apague as linhas `/*` e `*/` que estão logo abaixo desse comentário.
+
+O site coloca uma camada escura sobre as fotos para manter os textos legíveis.
 
 ---
 

@@ -32,7 +32,10 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 6rem; /* o cabeçalho fixo não cobre o título ao ir para uma seção */
+}
 
 body {
   margin: 0;
@@ -42,6 +45,8 @@ body {
   font-size: 1.1875rem; /* 19px */
   line-height: 1.7;
 }
+
+[hidden] { display: none !important; }
 
 img { max-width: 100%; height: auto; display: block; }
 
@@ -106,76 +111,318 @@ h2::after {
 }
 .botao:hover { background: var(--ouro-claro); color: var(--preto); }
 
-/* ---------- Topo ---------- */
+/* ---------- Faixa de contato no alto ---------- */
 
-.topo {
-  position: relative;
-  overflow: hidden;
-  background: var(--preto);
+.faixa {
+  background: #0c0b0a;
   border-bottom: 1px solid var(--linha);
+  font-size: 1.125rem;
+}
+.faixa-conteudo {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 0 .75rem;
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+}
+.faixa a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  min-width: 3rem;
+  min-height: 3rem;
+  padding: 0 .5rem;
+  color: var(--ouro-claro);
+  text-decoration: none;
+}
+.faixa a:hover { color: #fff; }
+.faixa svg { flex: none; }
+.faixa-texto { display: none; }
+
+@media (min-width: 48rem) {
+  .faixa-conteudo { justify-content: flex-end; gap: 1.25rem; padding: 0 1.25rem; }
+  .faixa-texto { display: inline; }
 }
 
-/* A imagem fica 14% mais alta que o topo e alinhada em cima, para que
-   a faixa de texto que existe na parte de baixo dela nunca apareça. */
-.topo-fundo {
-  position: absolute;
+/* ---------- Cabeçalho e menu ---------- */
+
+.cabecalho {
+  position: sticky;
   top: 0;
+  z-index: 40;
+  background: rgba(19, 18, 17, .97);
+  border-bottom: 1px solid var(--linha);
+}
+.cabecalho-conteudo {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: .6rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.marca { margin: 0; font-size: 1rem; line-height: 1; }
+.marca a, a.marca { display: block; }
+.marca img { width: auto; height: 3.5rem; }
+
+.menu-botao {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+  border: 1px solid var(--linha);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ouro-claro);
+  cursor: pointer;
+}
+.menu-botao[aria-expanded="true"] { background: var(--preto-madeira); border-color: var(--ouro); }
+
+.menu { width: 100%; }
+.menu ul { list-style: none; margin: 0; padding: 0; }
+.menu a {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: 3.5rem;
+  padding: .5rem .25rem;
+  color: var(--texto);
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--linha);
+}
+.menu a:hover { color: var(--ouro-claro); }
+.menu-seta { display: none; }
+.submenu a {
+  padding-left: 1.5rem;
+  font-weight: 400;
+  color: var(--texto-suave);
+}
+
+/* No celular o menu fica fechado até tocar no botão de três linhas.
+   Sem JavaScript, o botão continua escondido e o menu fica sempre aberto. */
+.menu-botao:not([hidden]) + .menu { display: none; }
+.menu-botao[aria-expanded="true"] + .menu { display: block; padding: .5rem 0 .75rem; }
+
+@media (min-width: 64rem) {
+  .cabecalho-conteudo { flex-wrap: nowrap; padding: .75rem 1.25rem; }
+  .marca img { height: 4.25rem; }
+  .menu-botao, .menu-botao:not([hidden]) { display: none; }
+  .menu, .menu-botao:not([hidden]) + .menu, .menu-botao[aria-expanded="true"] + .menu {
+    display: block;
+    width: auto;
+    padding: 0;
+  }
+  .menu > ul { display: flex; gap: .5rem; }
+  .menu a {
+    min-height: 3rem;
+    padding: .5rem .9rem;
+    border: 0;
+    font-size: 1.125rem;
+  }
+  .menu-seta { display: block; }
+  .menu-areas { position: relative; }
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 25rem;
+    padding: .5rem 0;
+    background: var(--preto-madeira);
+    border: 1px solid var(--linha);
+    border-top: 2px solid var(--ouro);
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .5);
+  }
+  .menu-areas:hover .submenu,
+  .menu-areas:focus-within .submenu { display: block; }
+  .submenu a {
+    padding: .75rem 1.25rem;
+    color: var(--texto);
+    font-weight: 600;
+  }
+}
+
+/* ---------- Abertura: dois painéis ---------- */
+
+/* Textura escura com granulado fino (desenhada em SVG, sem fotos) */
+.painel, .pagina-topo {
+  position: relative;
+  overflow: hidden;
+  background-color: #171513;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at 50% 0%, rgba(201, 163, 94, .14), transparent 60%),
+    linear-gradient(180deg, #1b1815 0%, #121110 100%);
+}
+/* Para usar fotos próprias no fundo dos painéis, coloque servidor.jpg e
+   consumidor.jpg na raiz do site e tire os comentários das regras abaixo. */
+/*
+.painel-servidor, .pagina-topo.painel-servidor {
+  background-image: linear-gradient(rgba(14, 12, 10, .78), rgba(14, 12, 10, .86)), url("servidor.jpg");
+  background-size: cover; background-position: center;
+}
+.painel-consumidor, .pagina-topo.painel-consumidor {
+  background-image: linear-gradient(rgba(14, 12, 10, .78), rgba(14, 12, 10, .86)), url("consumidor.jpg");
+  background-size: cover; background-position: center;
+}
+*/
+
+.painel-linhas {
+  position: absolute;
   left: 0;
   right: 0;
-  height: 114%;
+  bottom: 0;
+  width: 100%;
+  height: 55%;
+  color: var(--ouro);
+  opacity: .35;
+  pointer-events: none;
+}
+
+.abertura { padding: 1.25rem 1.25rem 2.5rem; }
+
+.paineis {
+  max-width: 76rem;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.painel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 19rem;
+  padding: 2.5rem 1.5rem;
+  border: 1px solid rgba(201, 163, 94, .45);
+  border-radius: 6px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--texto);
+}
+/* Moldura dourada fina por dentro do painel */
+.painel::before {
+  content: "";
+  position: absolute;
+  inset: .6rem;
+  border: 1px solid rgba(201, 163, 94, .2);
+  border-radius: 3px;
+  pointer-events: none;
+}
+.painel:hover { border-color: var(--ouro); color: var(--texto); }
+.painel:hover .painel-seta { background: var(--ouro); color: var(--preto); }
+.painel:focus-visible { outline-offset: 4px; }
+
+.painel-icone { position: relative; color: var(--ouro); flex: none; }
+
+.painel h2 { margin: 0; position: relative; }
+.painel h2::after { display: none; }
+.painel-rotulo {
+  display: block;
+  margin-bottom: .35rem;
+  font-family: var(--fonte-texto);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+.painel-titulo {
+  display: block;
+  font-size: clamp(1.6rem, 7vw, 2.5rem);
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--ouro-claro);
+}
+
+.painel-seta {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-top: .5rem;
+  border: 1px solid var(--ouro);
+  border-radius: 50%;
+  background: #161412;
+  color: var(--ouro-claro);
+}
+
+.abertura-linha {
+  max-width: 50rem;
+  margin: 2rem auto 0;
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 48rem) {
+  .abertura { padding: 2rem 1.25rem 3rem; }
+  .paineis { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .painel { min-height: 26rem; }
+  .painel-titulo { font-size: clamp(1.75rem, 3.2vw, 2.6rem); }
+  .abertura-linha { font-size: 1.375rem; }
+}
+
+/* ---------- Sobre o escritório ---------- */
+
+.container-largo { max-width: 76rem; }
+
+/* Recorte da imagem do escritório: prateleira e monograma "RM",
+   sem a linha com o nome e sem a faixa de texto da parte de baixo.
+   Área usada na imagem original (1254 × 1254): x 640–1230, y 200–569. */
+.sobre-imagem {
+  aspect-ratio: 590 / 369;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(201, 163, 94, .45);
+  border-radius: 6px;
   background-color: var(--preto);
   background-image: url("fundo-escritorio.png");
   background-image: image-set(url("fundo-escritorio.webp") type("image/webp"), url("fundo-escritorio.png") type("image/png"));
-  background-size: cover;
-  background-position: 72% top;
   background-repeat: no-repeat;
+  background-size: 212.54% auto;
+  background-position: 96.39% 22.6%;
 }
-/* No celular, uma camada escura garante a leitura do texto */
-.topo-fundo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(14, 12, 10, .8);
-}
-
-.topo-conteudo {
-  position: relative;
-  max-width: 46rem;
-  margin: 0 auto;
-  padding: 4rem 1.25rem 4.5rem;
-}
-
-.topo h1 {
-  font-size: clamp(2.3rem, 10vw, 4rem);
-  margin: 0 0 1.25rem;
-}
-
-.topo-texto {
-  font-size: 1.3125rem; /* 21px */
-  line-height: 1.6;
-  margin: 0 0 2rem;
-}
-
-.botao-whatsapp svg { flex: none; }
 
 @media (min-width: 64rem) {
-  .topo { min-height: clamp(30rem, 50vw, 46rem); display: flex; align-items: center; }
-  /* Na tela larga a imagem é ajustada pela largura; mostrando a faixa
-     entre 15% e 70% da altura dela, a faixa de texto de baixo fica de fora
-     e a placa da parede aparece inteira. */
-  .topo-fundo { height: 100%; background-position: center 34%; }
-  /* Na tela grande o texto fica sobre a parte escura, à esquerda */
-  .topo-fundo::after {
-    background: linear-gradient(90deg, rgba(14, 12, 10, .55) 0%, rgba(14, 12, 10, .25) 40%, rgba(14, 12, 10, 0) 55%);
+  .sobre {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
   }
-  .topo-conteudo {
-    width: 40%;
-    max-width: none;
-    margin: 0;
-    padding: 4rem 0 4rem 5vw;
-  }
-  .topo h1 { font-size: clamp(2.4rem, 3.6vw, 4rem); }
-  .topo-texto { font-size: 1.375rem; }
+  .sobre-imagem { order: 2; margin-bottom: 0; }
+}
+
+/* ---------- Páginas das áreas ---------- */
+
+.pagina-topo {
+  padding: 3rem 0 3.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--linha);
+}
+.pagina-topo .container { position: relative; }
+.pagina-topo .painel-linhas { height: 30%; }
+.pagina-topo .painel-icone { margin: 0 auto 1.25rem; }
+.pagina-topo h1 {
+  margin: 0;
+  font-size: clamp(1.9rem, 7.5vw, 3rem);
+  text-transform: uppercase;
+}
+
+.area-acao { margin-top: 2.5rem !important; }
+
+@media (min-width: 48rem) {
+  .pagina-topo { padding: 4.5rem 0 5rem; }
 }
 
 /* ---------- Seções ---------- */
@@ -299,7 +546,7 @@ h2::after {
   right: 1rem;
   bottom: 1rem;
   z-index: 50;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   gap: .6rem;
@@ -315,6 +562,7 @@ h2::after {
   border: 2px solid rgba(255, 255, 255, .25);
   box-shadow: 0 4px 14px rgba(0, 0, 0, .5);
 }
+.whatsapp-fixo.visivel { display: flex; }
 .whatsapp-fixo:hover { background: #22894f; color: #fff; }
 .whatsapp-fixo svg { flex: none; }
 .whatsapp-fixo-texto { display: none; }
