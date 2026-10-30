@@ -1,378 +1,325 @@
-/* RRM Advocacia — estilos */
+/* RRM Advocacia — estilos (pensado primeiro para celular) */
+
+@font-face {
+  font-family: "Cinzel";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fontes/cinzel-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Source Sans 3";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("fontes/source-sans-3-latin.woff2") format("woff2");
+}
 
 :root {
-  --fundo: #0d1117;
-  --fundo-alt: #131a23;
-  --linha: #262f3b;
-  --texto: #d9dde3;
-  --texto-suave: #9aa3ae;
-  --prata: #c0c0c0;
-  --ouro-escuro: #b8862e;
-  --ouro: #d9ae52;
-  --ouro-claro: #f5d77a;
-  --degrade-ouro: linear-gradient(100deg, #b8862e 0%, #e6c064 45%, #f5d77a 60%, #c99a3c 100%);
+  /* Paleta tirada da imagem do escritório e do logotipo */
+  --preto: #131211;          /* preto fosco */
+  --preto-madeira: #1c1611;  /* preto puxado para a madeira */
+  --madeira: #3b2817;        /* madeira escura */
+  --linha: #4a3523;
+  --ouro: #c9a35e;
+  --ouro-claro: #e0c27e;
+  --texto: #efe9df;
+  --texto-suave: #d3cabc;
+  --verde-whatsapp: #1d7a46;
   --fonte-titulo: "Cinzel", "Times New Roman", serif;
   --fonte-texto: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  --largura: 68rem;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 4.5rem;
-  -webkit-text-size-adjust: 100%;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-}
+html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background: var(--fundo);
+  background: var(--preto);
   color: var(--texto);
   font-family: var(--fonte-texto);
-  font-size: 1.0625rem;
+  font-size: 1.1875rem; /* 19px */
   line-height: 1.7;
 }
 
 img { max-width: 100%; height: auto; display: block; }
 
-a { color: var(--ouro-claro); text-underline-offset: 3px; }
+a {
+  color: var(--ouro-claro);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
 a:hover { color: #fff; }
 a:focus-visible, button:focus-visible {
-  outline: 2px solid var(--ouro-claro);
+  outline: 3px solid var(--ouro-claro);
   outline-offset: 3px;
 }
 
-h2, h3 {
+h1, h2 {
   font-family: var(--fonte-titulo);
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.25;
   letter-spacing: .03em;
+  color: var(--ouro-claro);
 }
 
 h2 {
-  font-size: clamp(1.6rem, 5vw, 2.2rem);
-  margin: 0 0 1.5rem;
-  text-align: center;
-  background: var(--degrade-ouro);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: var(--ouro);
-  -webkit-text-fill-color: transparent;
+  font-size: clamp(1.6rem, 6.5vw, 2.25rem);
+  margin: 0 0 1.75rem;
 }
-
 h2::after {
   content: "";
   display: block;
-  width: 3.5rem;
-  height: 1px;
-  margin: 1rem auto 0;
-  background: var(--prata);
-  opacity: .6;
+  width: 4rem;
+  height: 2px;
+  margin-top: .9rem;
+  background: var(--ouro);
 }
-
-h3 {
-  font-size: 1.15rem;
-  color: var(--ouro-claro);
-  margin: 0 0 .75rem;
-}
-
-.sr-only {
-  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
-}
-
-.skip {
-  position: absolute; left: 1rem; top: -3rem; z-index: 100;
-  background: var(--ouro-claro); color: var(--fundo);
-  padding: .5rem 1rem; border-radius: 4px;
-}
-.skip:focus { top: 1rem; }
 
 .container {
   width: 100%;
-  max-width: var(--largura);
+  max-width: 46rem;
   margin: 0 auto;
   padding: 0 1.25rem;
 }
-.container.estreito { max-width: 44rem; }
 
-/* ---------- Menu ---------- */
+/* ---------- Botões ---------- */
+
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .65rem;
+  min-height: 3.75rem;
+  padding: .75rem 1.75rem;
+  border: 0;
+  border-radius: 6px;
+  background: var(--ouro);
+  color: var(--preto);
+  font: inherit;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+}
+.botao:hover { background: var(--ouro-claro); color: var(--preto); }
+
+/* ---------- Topo ---------- */
 
 .topo {
-  position: sticky; top: 0; z-index: 50;
-  background: rgba(13, 17, 23, .94);
+  position: relative;
+  overflow: hidden;
+  background: var(--preto);
   border-bottom: 1px solid var(--linha);
 }
-@supports (backdrop-filter: blur(6px)) {
-  .topo { background: rgba(13, 17, 23, .82); backdrop-filter: blur(6px); }
+
+/* A imagem fica 14% mais alta que o topo e alinhada em cima, para que
+   a faixa de texto que existe na parte de baixo dela nunca apareça. */
+.topo-fundo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 114%;
+  background-color: var(--preto);
+  background-image: url("fundo-escritorio.png");
+  background-image: image-set(url("fundo-escritorio.webp") type("image/webp"), url("fundo-escritorio.png") type("image/png"));
+  background-size: cover;
+  background-position: 72% top;
+  background-repeat: no-repeat;
+}
+/* No celular, uma camada escura garante a leitura do texto */
+.topo-fundo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 12, 10, .8);
 }
 
-.nav {
-  max-width: var(--largura);
+.topo-conteudo {
+  position: relative;
+  max-width: 46rem;
   margin: 0 auto;
-  padding: .75rem 1.25rem;
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap;
+  padding: 4rem 1.25rem 4.5rem;
 }
 
-.nav-marca {
-  font-family: var(--fonte-titulo);
-  font-weight: 600;
-  letter-spacing: .08em;
-  color: var(--ouro-claro);
-  text-decoration: none;
-  font-size: 1rem;
+.topo h1 {
+  font-size: clamp(2.3rem, 10vw, 4rem);
+  margin: 0 0 1.25rem;
 }
 
-.nav-botao {
-  background: none; border: 1px solid var(--linha); border-radius: 4px;
-  width: 2.75rem; height: 2.5rem; cursor: pointer;
-  display: grid; place-items: center;
+.topo-texto {
+  font-size: 1.3125rem; /* 21px */
+  line-height: 1.6;
+  margin: 0 0 2rem;
 }
-.nav-botao-linhas,
-.nav-botao-linhas::before,
-.nav-botao-linhas::after {
-  display: block; width: 1.2rem; height: 2px; background: var(--prata);
-  position: relative; content: "";
-}
-.nav-botao-linhas::before { position: absolute; top: -6px; }
-.nav-botao-linhas::after { position: absolute; top: 6px; }
 
-.nav-lista {
-  list-style: none; margin: 0; padding: 0;
-  width: 100%;
-  display: none;
-}
-.nav-lista.aberta { display: block; padding: .5rem 0; }
-.nav-lista a {
-  display: block; padding: .6rem 0;
-  color: var(--texto); text-decoration: none;
-  font-size: .95rem; letter-spacing: .04em;
-}
-.nav-lista a:hover { color: var(--ouro-claro); }
+.botao-whatsapp svg { flex: none; }
 
-/* Sem JavaScript, o menu fica sempre visível */
-.no-js .nav-botao { display: none; }
-.no-js .nav-lista { display: flex; flex-wrap: wrap; gap: 0 1.25rem; }
-
-@media (min-width: 48rem) {
-  .nav { flex-wrap: nowrap; }
-  .nav-botao { display: none; }
-  .nav-lista, .nav-lista.aberta {
-    display: flex; width: auto; gap: 2rem; padding: 0;
+@media (min-width: 64rem) {
+  .topo { min-height: clamp(30rem, 50vw, 46rem); display: flex; align-items: center; }
+  /* Na tela larga a imagem é ajustada pela largura; mostrando a faixa
+     entre 15% e 70% da altura dela, a faixa de texto de baixo fica de fora
+     e a placa da parede aparece inteira. */
+  .topo-fundo { height: 100%; background-position: center 34%; }
+  /* Na tela grande o texto fica sobre a parte escura, à esquerda */
+  .topo-fundo::after {
+    background: linear-gradient(90deg, rgba(14, 12, 10, .55) 0%, rgba(14, 12, 10, .25) 40%, rgba(14, 12, 10, 0) 55%);
   }
-  .nav-lista a { padding: .25rem 0; }
-}
-
-/* ---------- Abertura ---------- */
-
-.hero {
-  text-align: center;
-  padding: 3.5rem 1.25rem 3.5rem;
-  background: radial-gradient(ellipse at 50% 0%, rgba(245, 215, 122, .07), transparent 65%);
-}
-
-.hero-logo {
-  margin: 0 auto 2rem;
-  max-width: 34rem;
-  font-size: 1rem; /* o título é a imagem */
-}
-.hero-logo img { width: 100%; }
-
-.hero-nome {
-  font-family: var(--fonte-titulo);
-  font-size: clamp(1.15rem, 4vw, 1.5rem);
-  letter-spacing: .06em;
-  color: var(--prata);
-  margin: 0;
-}
-.hero-oab, .hero-local {
-  margin: .25rem 0 0;
-  color: var(--texto-suave);
-  font-size: .95rem;
-  letter-spacing: .05em;
-}
-
-.filete {
-  width: min(16rem, 60%);
-  height: 1px;
-  margin: 2.5rem auto 0;
-  background: var(--degrade-ouro);
-}
-
-@media (min-width: 48rem) {
-  .hero { padding: 5.5rem 1.25rem 5rem; }
+  .topo-conteudo {
+    width: 40%;
+    max-width: none;
+    margin: 0;
+    padding: 4rem 0 4rem 5vw;
+  }
+  .topo h1 { font-size: clamp(2.4rem, 3.6vw, 4rem); }
+  .topo-texto { font-size: 1.375rem; }
 }
 
 /* ---------- Seções ---------- */
 
-.secao { padding: 4rem 0; }
+.secao { padding: 3.5rem 0; }
 .secao-alt {
-  background: var(--fundo-alt);
+  background: var(--preto-madeira);
   border-top: 1px solid var(--linha);
   border-bottom: 1px solid var(--linha);
 }
-.secao p { margin: 0 0 1rem; }
-
-.secao-intro {
-  text-align: center;
-  color: var(--texto-suave);
-  font-size: .95rem;
-  max-width: 40rem;
-  margin: 0 auto 2.5rem !important;
-}
+.secao p { margin: 0 0 1.25rem; }
+.secao p:last-child { margin-bottom: 0; }
 
 @media (min-width: 48rem) {
-  .secao { padding: 5.5rem 0; }
+  body { font-size: 1.25rem; } /* 20px */
+  .secao { padding: 5rem 0; }
 }
 
-/* ---------- Áreas ---------- */
-
-.area {
-  border: 1px solid var(--linha);
-  border-radius: 6px;
-  padding: 1.5rem 1.25rem;
-  background: var(--fundo);
+.lista {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
 }
-.area p:last-child { margin-bottom: 0; }
-
-.area-destaque {
+.lista li {
   position: relative;
-  border-color: rgba(217, 174, 82, .45);
-  padding: 2rem 1.25rem;
-  margin-bottom: 1.5rem;
+  padding-left: 1.75rem;
+  margin-bottom: .6rem;
 }
-.area-destaque::before {
+.lista li::before {
   content: "";
-  position: absolute; left: 0; right: 0; top: 0; height: 2px;
-  background: var(--degrade-ouro);
-  border-radius: 6px 6px 0 0;
-}
-.area-destaque h3 { font-size: clamp(1.25rem, 4vw, 1.5rem); }
-.area-sub {
-  color: var(--prata);
-  font-size: .95rem;
-  letter-spacing: .02em;
+  position: absolute;
+  left: .25rem;
+  top: .7em;
+  width: .55rem;
+  height: .55rem;
+  background: var(--ouro);
+  transform: rotate(45deg);
 }
 
-.areas-grade {
+.passos {
+  list-style: none;
+  counter-reset: passo;
+  margin: 0;
+  padding: 0;
+}
+.passos li {
+  counter-increment: passo;
+  position: relative;
+  padding: 0 0 0 4rem;
+  margin-bottom: 1.75rem;
+  min-height: 2.75rem;
+}
+.passos li:last-child { margin-bottom: 0; }
+.passos li::before {
+  content: counter(passo);
+  position: absolute;
+  left: 0;
+  top: -.1rem;
+  width: 2.75rem;
+  height: 2.75rem;
   display: grid;
-  gap: 1.5rem;
+  place-items: center;
+  border: 2px solid var(--ouro);
+  border-radius: 50%;
+  font-family: var(--fonte-titulo);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--ouro-claro);
 }
-
-@media (min-width: 40rem) {
-  .area { padding: 1.75rem; }
-  .area-destaque { padding: 2.5rem; }
-  .areas-grade { grid-template-columns: repeat(2, 1fr); }
-}
-@media (min-width: 64rem) {
-  .areas-grade { grid-template-columns: repeat(3, 1fr); }
-}
+.passos strong { color: var(--ouro-claro); font-weight: 600; }
 
 /* ---------- Contato ---------- */
 
-.contato-grade {
-  display: grid;
-  gap: 2rem;
-}
-
-.contato-lista { font-style: normal; }
-.contato-lista p { margin: 0 0 1.25rem; }
-.rotulo {
-  display: block;
-  font-family: var(--fonte-titulo);
-  font-size: .8rem;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--prata);
-}
+.contato { font-style: normal; margin-bottom: 2.5rem; }
+.contato p { margin: 0 0 1rem; }
+.contato a { display: inline-block; padding: .2rem 0; }
 
 .mapa {
-  min-height: 18rem;
   border: 1px solid var(--linha);
   border-radius: 6px;
-  overflow: hidden;
-  background: var(--fundo);
-  display: grid;
-  place-items: center;
-}
-.mapa iframe { width: 100%; height: 100%; min-height: 18rem; border: 0; display: block; }
-.mapa-aviso {
+  background: var(--preto-madeira);
+  padding: 1.75rem 1.25rem;
   text-align: center;
-  padding: 1.5rem;
-  color: var(--texto-suave);
-  font-size: .95rem;
 }
-.mapa-aviso p { margin: 0 0 1rem; }
-.mapa-aviso p:last-child { margin: 1rem 0 0; }
-
-.botao {
-  font: inherit;
-  font-weight: 600;
-  color: var(--fundo);
-  background: var(--degrade-ouro);
+.mapa p { margin: 0 0 1.25rem; }
+.mapa p:last-child { margin: 1.25rem 0 0; }
+.mapa-carregado { padding: 0; overflow: hidden; }
+.mapa-carregado p,
+.mapa-carregado p:last-child { margin: 0; padding: 1rem 1.25rem; }
+.mapa iframe {
+  display: block;
+  width: 100%;
+  height: 22rem;
   border: 0;
-  border-radius: 4px;
-  padding: .65rem 1.5rem;
-  cursor: pointer;
 }
-.botao:hover { filter: brightness(1.08); }
-
-.no-js #mapa-botao { display: none; }
 
 @media (min-width: 48rem) {
-  .contato-grade { grid-template-columns: 1fr 1.4fr; align-items: stretch; }
-  .mapa, .mapa iframe { min-height: 24rem; }
+  .mapa iframe { height: 26rem; }
 }
 
 /* ---------- Rodapé ---------- */
 
 .rodape {
-  padding: 3rem 0 6.5rem;
+  padding: 3rem 0 7.5rem;
   text-align: center;
   color: var(--texto-suave);
-  font-size: .9rem;
+  font-size: 1.125rem; /* 18px */
+  border-top: 1px solid var(--linha);
 }
-.rodape p { margin: 0 0 .35rem; }
-.rodape-marca {
-  font-family: var(--fonte-titulo);
-  color: var(--ouro-claro);
-  letter-spacing: .08em;
-  font-size: 1.05rem;
-}
-.rodape-aviso {
-  max-width: 40rem;
-  margin: 1.5rem auto 0 !important;
-  font-size: .8rem;
-  line-height: 1.6;
-  opacity: .85;
+.rodape p { margin: 0 0 .5rem; }
+.rodape-logo {
+  width: 100%;
+  max-width: 17rem;
+  margin: 0 auto 1.5rem;
 }
 
 /* ---------- Botão fixo do WhatsApp ---------- */
 
-.whatsapp {
+.whatsapp-fixo {
   position: fixed;
   right: 1rem;
   bottom: 1rem;
-  z-index: 60;
-  display: flex; align-items: center; gap: .5rem;
-  padding: .8rem;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  min-width: 4.25rem;
+  height: 4.25rem;
+  padding: 0 1rem;
   border-radius: 999px;
-  background: #1f7a4a;
+  background: var(--verde-whatsapp);
   color: #fff;
-  text-decoration: none;
   font-weight: 600;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, .45);
-  border: 1px solid rgba(255, 255, 255, .15);
+  font-size: 1.125rem;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, .25);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .5);
 }
-.whatsapp:hover { background: #238a54; color: #fff; }
-.whatsapp-texto { display: none; }
+.whatsapp-fixo:hover { background: #22894f; color: #fff; }
+.whatsapp-fixo svg { flex: none; }
+.whatsapp-fixo-texto { display: none; }
 
 @media (min-width: 48rem) {
-  .whatsapp { right: 1.5rem; bottom: 1.5rem; padding: .7rem 1.2rem .7rem .9rem; }
-  .whatsapp-texto { display: inline; }
+  .whatsapp-fixo { right: 1.5rem; bottom: 1.5rem; padding: 0 1.4rem 0 1.1rem; }
+  .whatsapp-fixo-texto { display: inline; }
 }
