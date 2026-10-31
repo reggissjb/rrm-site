@@ -31,6 +31,48 @@
   <link rel="preload" href="fontes/cinzel-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fontes/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
+
+  <!-- Dados estruturados: perguntas frequentes -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Como descubro quais empréstimos estão no meu benefício?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Quem recebe benefício do INSS pode consultar o extrato de empréstimos pelo aplicativo ou site Meu INSS. Também é possível consultar as operações de crédito em seu nome pelo Registrato, serviço gratuito do Banco Central."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Assinei o contrato sem entender. Ainda posso questionar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Em muitos casos, sim. A lei de defesa do consumidor exige que o contrato seja claro e que o consumidor tenha conhecimento prévio do que está assinando. A possibilidade de questionar depende do contrato e das circunstâncias de cada caso."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Caí num golpe de boleto ou PIX. O que faço primeiro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Avise o seu banco imediatamente e registre um boletim de ocorrência. Se o pagamento foi por PIX, peça ao seu banco a devolução pelo Mecanismo Especial de Devolução (MED) o quanto antes. Guarde comprovantes, prints de conversas e qualquer mensagem recebida."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "É possível suspender os descontos enquanto o processo corre?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Em algumas situações, é possível pedir ao juiz, logo no início do processo, que os descontos sejam suspensos, quando há elementos que indiquem a irregularidade. A decisão cabe ao juiz em cada caso."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <div class="faixa">
@@ -92,6 +134,25 @@
         </ul>
         <p>O escritório também atua em golpes com boletos falsos e transferências fraudulentas, quando há falha de segurança do banco ou da empresa envolvida.</p>
         <p>A análise parte dos extratos bancários, do histórico de empréstimos do benefício e dos contratos, quando o cliente os tiver.</p>
+        <div class="faq">
+          <h2 id="faq-titulo">Perguntas frequentes</h2>
+          <details class="pergunta">
+            <summary>Como descubro quais empréstimos estão no meu benefício?</summary>
+            <p>Quem recebe benefício do INSS pode consultar o extrato de empréstimos pelo aplicativo ou site Meu INSS. Também é possível consultar as operações de crédito em seu nome pelo Registrato, serviço gratuito do Banco Central.</p>
+          </details>
+          <details class="pergunta">
+            <summary>Assinei o contrato sem entender. Ainda posso questionar?</summary>
+            <p>Em muitos casos, sim. A lei de defesa do consumidor exige que o contrato seja claro e que o consumidor tenha conhecimento prévio do que está assinando. A possibilidade de questionar depende do contrato e das circunstâncias de cada caso.</p>
+          </details>
+          <details class="pergunta">
+            <summary>Caí num golpe de boleto ou PIX. O que faço primeiro?</summary>
+            <p>Avise o seu banco imediatamente e registre um boletim de ocorrência. Se o pagamento foi por PIX, peça ao seu banco a devolução pelo Mecanismo Especial de Devolução (MED) o quanto antes. Guarde comprovantes, prints de conversas e qualquer mensagem recebida.</p>
+          </details>
+          <details class="pergunta">
+            <summary>É possível suspender os descontos enquanto o processo corre?</summary>
+            <p>Em algumas situações, é possível pedir ao juiz, logo no início do processo, que os descontos sejam suspensos, quando há elementos que indiquem a irregularidade. A decisão cabe ao juiz em cada caso.</p>
+          </details>
+        </div>
         <p class="area-acao">
           <a class="botao" href="https://wa.me/551637285886?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20atendimento%20sobre%20Direito%20do%20Consumidor%20e%20Banc%C3%A1rio." rel="noopener">
             <svg width="28" height="28" aria-hidden="true" focusable="false"><use href="#icone-whatsapp"/></svg>
@@ -102,11 +163,19 @@
     </section>
   </main>
 
+  <div class="aviso-golpe" role="note">
+    <div class="container">
+      <svg width="32" height="32" aria-hidden="true" focusable="false"><use href="#icone-alerta"/></svg>
+      <p><strong>Atenção a golpes:</strong> a RRM Advocacia não solicita pagamentos por PIX, depósito ou boleto para liberar valores de processos. Se receber qualquer pedido desse tipo em nome do escritório, confirme antes pelo telefone <a href="tel:+551637285886">(16) 3728-5886</a>.</p>
+    </div>
+  </div>
+
   <footer class="rodape">
     <div class="container">
       <img class="rodape-logo" src="logo-rrm.png" width="1502" height="480" alt="" loading="lazy" decoding="async">
       <p>RRM Advocacia · Réggis Ranger de Melo · OAB/SP 421.248</p>
       <p>Conteúdo de caráter informativo.</p>
+      <p><a class="rodape-link" href="privacidade.html">Aviso de privacidade</a></p>
     </div>
   </footer>
 
@@ -121,6 +190,7 @@
     <symbol id="icone-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/></g><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></symbol>
     <symbol id="icone-coluna" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M6 22 32 9l26 13Z"/><path d="M9 26h46M14 30v20M22 30v20M42 30v20M50 30v20M28 30v20M36 30v20M10 54h44M6 58h52"/></g></symbol>
     <symbol id="icone-cartao" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="6" y="15" width="52" height="34" rx="4"/><path d="M6 25h52"/><rect x="12" y="32" width="10" height="8" rx="1.5"/><path d="M30 35h20M30 41h12"/></g></symbol>
+    <symbol id="icone-alerta" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 2.5 20h19Z"/><path d="M12 10v4.5"/></g><circle cx="12" cy="17.2" r="1.1" fill="currentColor"/></symbol>
     <symbol id="icone-seta" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   </svg>
 

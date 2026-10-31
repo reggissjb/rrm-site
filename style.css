@@ -32,10 +32,12 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html {
-  -webkit-text-size-adjust: 100%;
-  scroll-padding-top: 6rem; /* o cabeçalho fixo não cobre o título ao ir para uma seção */
-}
+html { -webkit-text-size-adjust: 100%; }
+
+/* Ao ir para uma seção pelo menu, o título não fica escondido sob o
+   cabeçalho fixo. O script.js atualiza --altura-cabecalho com a altura real. */
+:root { --altura-cabecalho: 6.5rem; }
+[id] { scroll-margin-top: var(--altura-cabecalho); }
 
 body {
   margin: 0;
@@ -56,6 +58,7 @@ a {
   text-underline-offset: 4px;
 }
 a:hover { color: #fff; }
+a[href^="tel:"] { white-space: nowrap; } /* o número de telefone não se divide em duas linhas */
 a:focus-visible, button:focus-visible {
   outline: 3px solid var(--ouro-claro);
   outline-offset: 3px;
@@ -421,6 +424,52 @@ h2::after {
 
 .area-acao { margin-top: 2.5rem !important; }
 
+/* Perguntas frequentes (sanfona) */
+.faq { margin-top: 3.5rem; }
+.pergunta {
+  margin-bottom: .75rem;
+  border: 1px solid var(--linha);
+  border-radius: 6px;
+  background: var(--preto-madeira);
+}
+.pergunta summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4rem;
+  padding: .9rem 1.25rem;
+  list-style: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--texto);
+}
+.pergunta summary::-webkit-details-marker { display: none; }
+.pergunta summary::after {
+  content: "";
+  flex: none;
+  width: .7rem;
+  height: .7rem;
+  margin: -.3rem .25rem 0 0;
+  border-right: 2px solid var(--ouro);
+  border-bottom: 2px solid var(--ouro);
+  transform: rotate(45deg);
+}
+.pergunta summary:hover { color: var(--ouro-claro); }
+.pergunta summary:focus-visible { outline: 3px solid var(--ouro-claro); outline-offset: 2px; border-radius: 6px; }
+.pergunta[open] summary { color: var(--ouro-claro); border-bottom: 1px solid var(--linha); }
+.pergunta[open] summary::after { transform: rotate(-135deg); margin-top: .35rem; }
+.secao .pergunta p { margin: 0; padding: 1rem 1.25rem 1.25rem; }
+
+/* Aviso de privacidade */
+.texto-legal h2 {
+  font-size: clamp(1.35rem, 5vw, 1.6rem);
+  margin: 2.75rem 0 1rem;
+}
+.texto-legal h2::after { width: 3rem; margin-top: .6rem; }
+
 @media (min-width: 48rem) {
   .pagina-topo { padding: 4.5rem 0 5rem; }
 }
@@ -523,6 +572,28 @@ h2::after {
   .mapa iframe { height: 26rem; }
 }
 
+/* ---------- Aviso contra golpe ---------- */
+
+.aviso-golpe {
+  padding: 1.5rem 0;
+  background: #0f0e0d;
+  border-top: 1px solid var(--linha);
+}
+.aviso-golpe .container {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  max-width: 56rem;
+}
+.aviso-golpe svg { flex: none; margin-top: .15rem; color: var(--ouro); }
+.aviso-golpe p {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--texto-suave);
+}
+.aviso-golpe strong { color: var(--ouro-claro); font-weight: 600; }
+
 /* ---------- Rodapé ---------- */
 
 .rodape {
@@ -533,6 +604,7 @@ h2::after {
   border-top: 1px solid var(--linha);
 }
 .rodape p { margin: 0 0 .5rem; }
+.rodape-link { display: inline-block; padding: .5rem 0; }
 .rodape-logo {
   width: 100%;
   max-width: 17rem;

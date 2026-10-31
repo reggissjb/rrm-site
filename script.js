@@ -1,5 +1,15 @@
 // RRM Advocacia — scripts mínimos: menu do celular, botão fixo do WhatsApp e mapa sob demanda
 (function () {
+  // Altura real do cabeçalho fixo, usada para o título da seção não ficar escondido embaixo dele
+  var cabecalho = document.querySelector(".cabecalho");
+  var medirCabecalho = function () {
+    if (cabecalho) {
+      document.documentElement.style.setProperty("--altura-cabecalho", (cabecalho.offsetHeight + 12) + "px");
+    }
+  };
+  medirCabecalho();
+  window.addEventListener("resize", medirCabecalho);
+
   // Menu de três linhas (celular)
   var menuBotao = document.querySelector(".menu-botao");
   var menu = document.getElementById("menu");
@@ -10,7 +20,10 @@
       menuBotao.setAttribute("aria-expanded", aberto ? "false" : "true");
     });
     menu.addEventListener("click", function (e) {
-      if (e.target.closest("a")) menuBotao.setAttribute("aria-expanded", "false");
+      if (e.target.closest("a")) {
+        menuBotao.setAttribute("aria-expanded", "false");
+        medirCabecalho();
+      }
     });
   }
 

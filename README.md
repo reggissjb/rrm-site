@@ -11,6 +11,7 @@ O site não coleta dados dos visitantes: não tem formulários, pixels, Google A
 | `index.html` | Página inicial: os dois painéis das áreas, Sobre o escritório, Como funciona o atendimento e Contato |
 | `servidor-publico.html` | Página da área de servidor público estadual aposentado |
 | `consumidor-bancario.html` | Página da área de Direito do Consumidor e Bancário |
+| `privacidade.html` | Aviso de privacidade (link no rodapé de todas as páginas) |
 | `style.css` | Cores, fontes e layout |
 | `script.js` | Menu do celular, botão fixo do WhatsApp e botão "Mostrar mapa" |
 | `logo-rrm.png` | Logotipo (aparece no cabeçalho, no rodapé e na prévia do link no WhatsApp e nas redes sociais) |
@@ -30,7 +31,9 @@ O site não coleta dados dos visitantes: não tem formulários, pixels, Google A
 3. Use Ctrl+F para achar o texto e altere apenas o que está entre as marcações, por exemplo entre `<p>` e `</p>`.
 4. Clique em **Commit changes**. O site se atualiza em cerca de 1 minuto.
 
-A faixa do alto, o cabeçalho com o menu e o rodapé se repetem nas três páginas (`index.html`, `servidor-publico.html` e `consumidor-bancario.html`). Se mudar algo neles, faça a mesma mudança nos três arquivos.
+A faixa do alto, o cabeçalho com o menu, o aviso contra golpe e o rodapé se repetem nas quatro páginas (`index.html`, `servidor-publico.html`, `consumidor-bancario.html` e `privacidade.html`). Se mudar algo neles, faça a mesma mudança nos quatro arquivos.
+
+As perguntas frequentes das páginas das áreas aparecem em dois lugares do mesmo arquivo: na seção "Perguntas frequentes" e no bloco "Dados estruturados: perguntas frequentes", no começo do arquivo. Se mudar uma pergunta ou resposta, altere nos dois lugares.
 
 Se mudar o endereço, o telefone ou o horário, altere também o bloco "Dados estruturados", no começo do `index.html`.
 
