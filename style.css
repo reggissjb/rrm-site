@@ -1,0 +1,645 @@
+/* RRM Advocacia — estilos (pensado primeiro para celular) */
+
+@font-face {
+  font-family: "Cinzel";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fontes/cinzel-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Source Sans 3";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("fontes/source-sans-3-latin.woff2") format("woff2");
+}
+
+:root {
+  /* Paleta tirada da imagem do escritório e do logotipo */
+  --preto: #131211;          /* preto fosco */
+  --preto-madeira: #1c1611;  /* preto puxado para a madeira */
+  --madeira: #3b2817;        /* madeira escura */
+  --linha: #4a3523;
+  --ouro: #c9a35e;
+  --ouro-claro: #e0c27e;
+  --texto: #efe9df;
+  --texto-suave: #d3cabc;
+  --verde-whatsapp: #1d7a46;
+  --fonte-titulo: "Cinzel", "Times New Roman", serif;
+  --fonte-texto: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+/* Ao ir para uma seção pelo menu, o título não fica escondido sob o
+   cabeçalho fixo. O script.js atualiza --altura-cabecalho com a altura real. */
+:root { --altura-cabecalho: 6.5rem; }
+[id] { scroll-margin-top: var(--altura-cabecalho); }
+
+body {
+  margin: 0;
+  background: var(--preto);
+  color: var(--texto);
+  font-family: var(--fonte-texto);
+  font-size: 1.1875rem; /* 19px */
+  line-height: 1.7;
+}
+
+[hidden] { display: none !important; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+a {
+  color: var(--ouro-claro);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+a:hover { color: #fff; }
+a[href^="tel:"] { white-space: nowrap; } /* o número de telefone não se divide em duas linhas */
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--ouro-claro);
+  outline-offset: 3px;
+}
+
+h1, h2 {
+  font-family: var(--fonte-titulo);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: .03em;
+  color: var(--ouro-claro);
+}
+
+h2 {
+  font-size: clamp(1.6rem, 6.5vw, 2.25rem);
+  margin: 0 0 1.75rem;
+}
+h2::after {
+  content: "";
+  display: block;
+  width: 4rem;
+  height: 2px;
+  margin-top: .9rem;
+  background: var(--ouro);
+}
+
+.container {
+  width: 100%;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ---------- Botões ---------- */
+
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .65rem;
+  min-height: 3.75rem;
+  padding: .75rem 1.75rem;
+  border: 0;
+  border-radius: 6px;
+  background: var(--ouro);
+  color: var(--preto);
+  font: inherit;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+}
+.botao:hover { background: var(--ouro-claro); color: var(--preto); }
+
+/* ---------- Faixa de contato no alto ---------- */
+
+.faixa {
+  background: #0c0b0a;
+  border-bottom: 1px solid var(--linha);
+  font-size: 1.125rem;
+}
+.faixa-conteudo {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 0 .75rem;
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+}
+.faixa a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  min-width: 3rem;
+  min-height: 3rem;
+  padding: 0 .5rem;
+  color: var(--ouro-claro);
+  text-decoration: none;
+}
+.faixa a:hover { color: #fff; }
+.faixa svg { flex: none; }
+.faixa-texto { display: none; }
+
+@media (min-width: 48rem) {
+  .faixa-conteudo { justify-content: flex-end; gap: 1.25rem; padding: 0 1.25rem; }
+  .faixa-texto { display: inline; }
+}
+
+/* ---------- Cabeçalho e menu ---------- */
+
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(19, 18, 17, .97);
+  border-bottom: 1px solid var(--linha);
+}
+.cabecalho-conteudo {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: .6rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.marca { margin: 0; font-size: 1rem; line-height: 1; }
+.marca a, a.marca { display: block; }
+.marca img { width: auto; height: 3.5rem; }
+
+.menu-botao {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+  border: 1px solid var(--linha);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ouro-claro);
+  cursor: pointer;
+}
+.menu-botao[aria-expanded="true"] { background: var(--preto-madeira); border-color: var(--ouro); }
+
+.menu { width: 100%; }
+.menu ul { list-style: none; margin: 0; padding: 0; }
+.menu a {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: 3.5rem;
+  padding: .5rem .25rem;
+  color: var(--texto);
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--linha);
+}
+.menu a:hover { color: var(--ouro-claro); }
+.menu-seta { display: none; }
+.submenu a {
+  padding-left: 1.5rem;
+  font-weight: 400;
+  color: var(--texto-suave);
+}
+
+/* No celular o menu fica fechado até tocar no botão de três linhas.
+   Sem JavaScript, o botão continua escondido e o menu fica sempre aberto. */
+.menu-botao:not([hidden]) + .menu { display: none; }
+.menu-botao[aria-expanded="true"] + .menu { display: block; padding: .5rem 0 .75rem; }
+
+@media (min-width: 64rem) {
+  .cabecalho-conteudo { flex-wrap: nowrap; padding: .75rem 1.25rem; }
+  .marca img { height: 4.25rem; }
+  .menu-botao, .menu-botao:not([hidden]) { display: none; }
+  .menu, .menu-botao:not([hidden]) + .menu, .menu-botao[aria-expanded="true"] + .menu {
+    display: block;
+    width: auto;
+    padding: 0;
+  }
+  .menu > ul { display: flex; gap: .5rem; }
+  .menu a {
+    min-height: 3rem;
+    padding: .5rem .9rem;
+    border: 0;
+    font-size: 1.125rem;
+  }
+  .menu-seta { display: block; }
+  .menu-areas { position: relative; }
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 25rem;
+    padding: .5rem 0;
+    background: var(--preto-madeira);
+    border: 1px solid var(--linha);
+    border-top: 2px solid var(--ouro);
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .5);
+  }
+  .menu-areas:hover .submenu,
+  .menu-areas:focus-within .submenu { display: block; }
+  .submenu a {
+    padding: .75rem 1.25rem;
+    color: var(--texto);
+    font-weight: 600;
+  }
+}
+
+/* ---------- Abertura: dois painéis ---------- */
+
+/* Textura escura com granulado fino (desenhada em SVG, sem fotos) */
+.painel, .pagina-topo {
+  position: relative;
+  overflow: hidden;
+  background-color: #171513;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at 50% 0%, rgba(201, 163, 94, .14), transparent 60%),
+    linear-gradient(180deg, #1b1815 0%, #121110 100%);
+}
+/* Para usar fotos próprias no fundo dos painéis, coloque servidor.jpg e
+   consumidor.jpg na raiz do site e tire os comentários das regras abaixo. */
+/*
+.painel-servidor, .pagina-topo.painel-servidor {
+  background-image: linear-gradient(rgba(14, 12, 10, .78), rgba(14, 12, 10, .86)), url("servidor.jpg");
+  background-size: cover; background-position: center;
+}
+.painel-consumidor, .pagina-topo.painel-consumidor {
+  background-image: linear-gradient(rgba(14, 12, 10, .78), rgba(14, 12, 10, .86)), url("consumidor.jpg");
+  background-size: cover; background-position: center;
+}
+*/
+
+.painel-linhas {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 55%;
+  color: var(--ouro);
+  opacity: .35;
+  pointer-events: none;
+}
+
+.abertura { padding: 1.25rem 1.25rem 2.5rem; }
+
+.paineis {
+  max-width: 76rem;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.painel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 19rem;
+  padding: 2.5rem 1.5rem;
+  border: 1px solid rgba(201, 163, 94, .45);
+  border-radius: 6px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--texto);
+}
+/* Moldura dourada fina por dentro do painel */
+.painel::before {
+  content: "";
+  position: absolute;
+  inset: .6rem;
+  border: 1px solid rgba(201, 163, 94, .2);
+  border-radius: 3px;
+  pointer-events: none;
+}
+.painel:hover { border-color: var(--ouro); color: var(--texto); }
+.painel:hover .painel-seta { background: var(--ouro); color: var(--preto); }
+.painel:focus-visible { outline-offset: 4px; }
+
+.painel-icone { position: relative; color: var(--ouro); flex: none; }
+
+.painel h2 { margin: 0; position: relative; }
+.painel h2::after { display: none; }
+.painel-rotulo {
+  display: block;
+  margin-bottom: .35rem;
+  font-family: var(--fonte-texto);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+.painel-titulo {
+  display: block;
+  font-size: clamp(1.6rem, 7vw, 2.5rem);
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--ouro-claro);
+}
+
+.painel-seta {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-top: .5rem;
+  border: 1px solid var(--ouro);
+  border-radius: 50%;
+  background: #161412;
+  color: var(--ouro-claro);
+}
+
+.abertura-linha {
+  max-width: 50rem;
+  margin: 2rem auto 0;
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 48rem) {
+  .abertura { padding: 2rem 1.25rem 3rem; }
+  .paineis { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .painel { min-height: 26rem; }
+  .painel-titulo { font-size: clamp(1.75rem, 3.2vw, 2.6rem); }
+  .abertura-linha { font-size: 1.375rem; }
+}
+
+/* ---------- Sobre o escritório ---------- */
+
+.container-largo { max-width: 76rem; }
+
+/* Recorte da imagem do escritório: prateleira e monograma "RM",
+   sem a linha com o nome e sem a faixa de texto da parte de baixo.
+   Área usada na imagem original (1254 × 1254): x 640–1230, y 200–569. */
+.sobre-imagem {
+  aspect-ratio: 590 / 369;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(201, 163, 94, .45);
+  border-radius: 6px;
+  background-color: var(--preto);
+  background-image: url("fundo-escritorio.png");
+  background-image: image-set(url("fundo-escritorio.webp") type("image/webp"), url("fundo-escritorio.png") type("image/png"));
+  background-repeat: no-repeat;
+  background-size: 212.54% auto;
+  background-position: 96.39% 22.6%;
+}
+
+@media (min-width: 64rem) {
+  .sobre {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
+  }
+  .sobre-imagem { order: 2; margin-bottom: 0; }
+}
+
+/* ---------- Páginas das áreas ---------- */
+
+.pagina-topo {
+  padding: 3rem 0 3.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--linha);
+}
+.pagina-topo .container { position: relative; }
+.pagina-topo .painel-linhas { height: 30%; }
+.pagina-topo .painel-icone { margin: 0 auto 1.25rem; }
+.pagina-topo h1 {
+  margin: 0;
+  font-size: clamp(1.9rem, 7.5vw, 3rem);
+  text-transform: uppercase;
+}
+
+.area-acao { margin-top: 2.5rem !important; }
+
+/* Perguntas frequentes (sanfona) */
+.faq { margin-top: 3.5rem; }
+.pergunta {
+  margin-bottom: .75rem;
+  border: 1px solid var(--linha);
+  border-radius: 6px;
+  background: var(--preto-madeira);
+}
+.pergunta summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4rem;
+  padding: .9rem 1.25rem;
+  list-style: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--texto);
+}
+.pergunta summary::-webkit-details-marker { display: none; }
+.pergunta summary::after {
+  content: "";
+  flex: none;
+  width: .7rem;
+  height: .7rem;
+  margin: -.3rem .25rem 0 0;
+  border-right: 2px solid var(--ouro);
+  border-bottom: 2px solid var(--ouro);
+  transform: rotate(45deg);
+}
+.pergunta summary:hover { color: var(--ouro-claro); }
+.pergunta summary:focus-visible { outline: 3px solid var(--ouro-claro); outline-offset: 2px; border-radius: 6px; }
+.pergunta[open] summary { color: var(--ouro-claro); border-bottom: 1px solid var(--linha); }
+.pergunta[open] summary::after { transform: rotate(-135deg); margin-top: .35rem; }
+.secao .pergunta p { margin: 0; padding: 1rem 1.25rem 1.25rem; }
+
+/* Aviso de privacidade */
+.texto-legal h2 {
+  font-size: clamp(1.35rem, 5vw, 1.6rem);
+  margin: 2.75rem 0 1rem;
+}
+.texto-legal h2::after { width: 3rem; margin-top: .6rem; }
+
+@media (min-width: 48rem) {
+  .pagina-topo { padding: 4.5rem 0 5rem; }
+}
+
+/* ---------- Seções ---------- */
+
+.secao { padding: 3.5rem 0; }
+.secao-alt {
+  background: var(--preto-madeira);
+  border-top: 1px solid var(--linha);
+  border-bottom: 1px solid var(--linha);
+}
+.secao p { margin: 0 0 1.25rem; }
+.secao p:last-child { margin-bottom: 0; }
+
+@media (min-width: 48rem) {
+  body { font-size: 1.25rem; } /* 20px */
+  .secao { padding: 5rem 0; }
+}
+
+.lista {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+.lista li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: .6rem;
+}
+.lista li::before {
+  content: "";
+  position: absolute;
+  left: .25rem;
+  top: .7em;
+  width: .55rem;
+  height: .55rem;
+  background: var(--ouro);
+  transform: rotate(45deg);
+}
+
+.passos {
+  list-style: none;
+  counter-reset: passo;
+  margin: 0;
+  padding: 0;
+}
+.passos li {
+  counter-increment: passo;
+  position: relative;
+  padding: 0 0 0 4rem;
+  margin-bottom: 1.75rem;
+  min-height: 2.75rem;
+}
+.passos li:last-child { margin-bottom: 0; }
+.passos li::before {
+  content: counter(passo);
+  position: absolute;
+  left: 0;
+  top: -.1rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--ouro);
+  border-radius: 50%;
+  font-family: var(--fonte-titulo);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--ouro-claro);
+}
+.passos strong { color: var(--ouro-claro); font-weight: 600; }
+
+/* ---------- Contato ---------- */
+
+.contato { font-style: normal; margin-bottom: 2.5rem; }
+.contato p { margin: 0 0 1rem; }
+.contato a { display: inline-block; padding: .2rem 0; }
+
+.mapa {
+  border: 1px solid var(--linha);
+  border-radius: 6px;
+  background: var(--preto-madeira);
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+}
+.mapa p { margin: 0 0 1.25rem; }
+.mapa p:last-child { margin: 1.25rem 0 0; }
+.mapa-carregado { padding: 0; overflow: hidden; }
+.mapa-carregado p,
+.mapa-carregado p:last-child { margin: 0; padding: 1rem 1.25rem; }
+.mapa iframe {
+  display: block;
+  width: 100%;
+  height: 22rem;
+  border: 0;
+}
+
+@media (min-width: 48rem) {
+  .mapa iframe { height: 26rem; }
+}
+
+/* ---------- Aviso contra golpe ---------- */
+
+.aviso-golpe {
+  padding: 1.5rem 0;
+  background: #0f0e0d;
+  border-top: 1px solid var(--linha);
+}
+.aviso-golpe .container {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  max-width: 56rem;
+}
+.aviso-golpe svg { flex: none; margin-top: .15rem; color: var(--ouro); }
+.aviso-golpe p {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--texto-suave);
+}
+.aviso-golpe strong { color: var(--ouro-claro); font-weight: 600; }
+
+/* ---------- Rodapé ---------- */
+
+.rodape {
+  padding: 3rem 0 7.5rem;
+  text-align: center;
+  color: var(--texto-suave);
+  font-size: 1.125rem; /* 18px */
+  border-top: 1px solid var(--linha);
+}
+.rodape p { margin: 0 0 .5rem; }
+.rodape-link { display: inline-block; padding: .5rem 0; }
+.rodape-logo {
+  width: 100%;
+  max-width: 17rem;
+  margin: 0 auto 1.5rem;
+}
+
+/* ---------- Botão fixo do WhatsApp ---------- */
+
+.whatsapp-fixo {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 50;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  min-width: 4.25rem;
+  height: 4.25rem;
+  padding: 0 1rem;
+  border-radius: 999px;
+  background: var(--verde-whatsapp);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.125rem;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, .25);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .5);
+}
+.whatsapp-fixo.visivel { display: flex; }
+.whatsapp-fixo:hover { background: #22894f; color: #fff; }
+.whatsapp-fixo svg { flex: none; }
+.whatsapp-fixo-texto { display: none; }
+
+@media (min-width: 48rem) {
+  .whatsapp-fixo { right: 1.5rem; bottom: 1.5rem; padding: 0 1.4rem 0 1.1rem; }
+  .whatsapp-fixo-texto { display: inline; }
+}
