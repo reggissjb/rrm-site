@@ -15,8 +15,8 @@ O site não coleta dados dos visitantes: não tem formulários, pixels, Google A
 | `style.css` | Cores, fontes e layout |
 | `script.js` | Menu do celular, botão fixo do WhatsApp e botão "Mostrar mapa" |
 | `logo-rrm.png` | Logotipo (aparece no cabeçalho, no rodapé e na prévia do link no WhatsApp e nas redes sociais) |
-| `fundo-escritorio.png` | Imagem do escritório, usada ao lado do texto "Sobre o escritório" (recortada no monograma RM) |
-| `fundo-escritorio.webp` | Cópia mais leve da imagem de fundo, carregada no lugar do PNG pelos navegadores atuais |
+| `fundo-escritorio.png` | Imagem original do escritório (não é usada diretamente pela página; serviu de base para `sobre-rm`) |
+| `sobre-rm.webp` / `sobre-rm.png` | Imagem ao lado do texto "Sobre o escritório": recorte de `fundo-escritorio.png` com a prateleira e o monograma RRM centralizado. O WebP é a versão leve; o PNG é a alternativa para navegadores antigos |
 | `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` | Ícones da aba do navegador e da tela do celular, feitos a partir do logotipo |
 | `rrm-icone.ico` | Ícone original enviado para o repositório (não é usado pela página) |
 | `site.webmanifest` | Nome e ícones usados quando alguém salva o site na tela inicial do celular |

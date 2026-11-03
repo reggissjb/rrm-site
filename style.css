@@ -380,20 +380,20 @@ h2::after {
 
 .container-largo { max-width: 76rem; }
 
-/* Recorte da imagem do escritório: prateleira e monograma "RM",
-   sem a linha com o nome e sem a faixa de texto da parte de baixo.
-   Área usada na imagem original (1254 × 1254): x 640–1230, y 200–569. */
+/* Imagem própria da seção (sobre-rm.webp / sobre-rm.png), já recortada a
+   partir de fundo-escritorio.png: o monograma e o losango ficam inteiros e
+   centralizados. É exibida inteira, na proporção fixa de 4:3, sem recorte. */
 .sobre-imagem {
-  aspect-ratio: 590 / 369;
+  display: block;
   margin-bottom: 2rem;
+}
+.sobre-imagem img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
   border: 1px solid rgba(201, 163, 94, .45);
   border-radius: 6px;
   background-color: var(--preto);
-  background-image: url("fundo-escritorio.png");
-  background-image: image-set(url("fundo-escritorio.webp") type("image/webp"), url("fundo-escritorio.png") type("image/png"));
-  background-repeat: no-repeat;
-  background-size: 212.54% auto;
-  background-position: 96.39% 22.6%;
 }
 
 @media (min-width: 64rem) {
