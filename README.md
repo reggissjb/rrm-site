@@ -2,7 +2,7 @@
 
 Site feito só com HTML, CSS e um pouco de JavaScript: sem frameworks e sem nenhuma etapa de compilação. É publicado pelo **GitHub Pages**.
 
-O site não coleta dados dos visitantes: não tem formulários, pixels, Google Analytics nem qualquer rastreamento. As fontes ficam no próprio site (pasta `fontes/`). O mapa do Google só carrega quando o visitante clica em **Mostrar mapa**.
+O site não tem formulários, cookies, pixels nem rastreamento individual. Para contar as visitas, usa o **Cloudflare Web Analytics**, que funciona sem cookies e mostra só números agregados (o código fica logo antes de `</body>` nas quatro páginas). As fontes ficam no próprio site (pasta `fontes/`). O mapa do Google só carrega quando o visitante clica em **Mostrar mapa**.
 
 ## O que tem em cada arquivo
 
