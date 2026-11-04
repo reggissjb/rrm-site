@@ -16,7 +16,7 @@ O site não tem formulários, cookies, pixels nem rastreamento individual. Para 
 | `script.js` | Menu do celular, botão fixo do WhatsApp e botão "Mostrar mapa" |
 | `logo-rrm.png` | Logotipo (aparece no cabeçalho, no rodapé e na prévia do link no WhatsApp e nas redes sociais) |
 | `fundo-escritorio.png` | Imagem original do escritório (não é usada diretamente pela página; serviu de base para `sobre-rm`) |
-| `sobre-rm.webp` / `sobre-rm.png` | Imagem ao lado do texto "Sobre o escritório": recorte de `fundo-escritorio.png` com a prateleira e o monograma RRM centralizado. O WebP é a versão leve; o PNG é a alternativa para navegadores antigos |
+| `sobre-rm.webp` / `sobre-rm.png` | Imagem ao lado do texto "Sobre o escritório": recorte fiel de `fundo-escritorio.png` (sem retoque), com parte da prateleira e a placa inteira centralizada (monograma, nome, ADVOCACIA e ornamento). O WebP é a versão leve; o PNG é a alternativa para navegadores antigos |
 | `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` | Ícones da aba do navegador e da tela do celular, feitos a partir do logotipo |
 | `rrm-icone.ico` | Ícone original enviado para o repositório (não é usado pela página) |
 | `site.webmanifest` | Nome e ícones usados quando alguém salva o site na tela inicial do celular |

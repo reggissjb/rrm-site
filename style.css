@@ -380,9 +380,10 @@ h2::after {
 
 .container-largo { max-width: 76rem; }
 
-/* Imagem própria da seção (sobre-rm.webp / sobre-rm.png), já recortada a
-   partir de fundo-escritorio.png: o monograma e o losango ficam inteiros e
-   centralizados. É exibida inteira, na proporção fixa de 4:3, sem recorte. */
+/* Imagem própria da seção (sobre-rm.webp / sobre-rm.png): recorte fiel de
+   fundo-escritorio.png, sem retoque, com a placa inteira (monograma, nome,
+   ADVOCACIA e ornamento) centralizada. É exibida inteira, na proporção fixa
+   de 4:3, sem recorte. */
 .sobre-imagem {
   display: block;
   margin-bottom: 2rem;
