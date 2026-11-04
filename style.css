@@ -425,6 +425,10 @@ h2::after {
 
 .area-acao { margin-top: 2.5rem !important; }
 
+/* Página não encontrada (404.html) */
+.pagina-404 { text-align: center; }
+.pagina-404 .botao { margin-top: 1rem; }
+
 /* Perguntas frequentes (sanfona) */
 .faq { margin-top: 3.5rem; }
 .pergunta {
