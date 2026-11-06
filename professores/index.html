@@ -61,18 +61,26 @@
       padding: 2rem 1.25rem 2.5rem;
       border-bottom: 3px solid var(--ouro);
     }
-    .topo img { width: 220px; margin: 0 auto 1.75rem; }
+    .topo .logo { width: 190px; margin: 0 auto 1.5rem; }
+    .topo .chamada {
+      margin: 0 auto .75rem;
+      font-size: .95rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--ouro);
+    }
     .topo h1 {
-      font-family: var(--titulo);
-      font-weight: 600;
-      font-size: clamp(1.55rem, 6.5vw, 2.1rem);
-      line-height: 1.25;
-      letter-spacing: .02em;
-      color: var(--ouro-claro);
+      font-family: var(--texto);
+      font-weight: 800;
+      font-size: clamp(1.85rem, 8.2vw, 2.6rem);
+      line-height: 1.15;
+      letter-spacing: -.005em;
+      color: #fff;
       margin: 0 auto;
       max-width: 30rem;
     }
-    .topo p { margin: 1rem auto 0; max-width: 28rem; font-size: 1.2rem; color: #e6dfd3; }
+    .topo h1 span { color: var(--ouro-claro); }
+    .topo .sub { margin: 1.25rem auto 0; max-width: 28rem; font-size: 1.2rem; color: #e6dfd3; }
+    .topo .sub strong { color: var(--ouro-claro); }
+    .botao-topo { max-width: 28rem; margin: 1.5rem auto 0; text-align: left; }
 
     .conteudo { max-width: 32rem; margin: 0 auto; padding: 2rem 1.25rem 2.5rem; }
 
@@ -191,19 +199,24 @@
 </head>
 <body>
   <header class="topo">
-    <img src="/logo-rrm.png" width="1502" height="480" alt="RRM Advocacia · Réggis Ranger de Melo">
-    <h1>Professores e professoras aposentados da rede estadual de São Paulo</h1>
-    <p>O quinquênio e a sexta-parte do seu holerite podem estar sendo calculados sobre só uma parte do salário.</p>
+    <img class="logo" src="/logo-rrm.png" width="1502" height="480" alt="RRM Advocacia · Réggis Ranger de Melo">
+    <p class="chamada">Professores e professoras aposentados da rede estadual de SP</p>
+    <h1>Será que o seu <span>quinquênio</span> e a sua <span>sexta-parte</span> estão sendo calculados corretamente?</h1>
     <figure class="foto foto-topo">
-          <img src="/professores/professora.webp" width="1200" height="800" alt="Professora aposentada conferindo o holerite à mesa da cozinha" fetchpriority="high" decoding="async">
-          <span class="selo-ilustrativa">Imagem ilustrativa</span>
-        </figure>
+      <img src="/professores/professora.webp" width="1200" height="800" alt="Professora aposentada conferindo o holerite à mesa da cozinha" fetchpriority="high" decoding="async">
+      <span class="selo-ilustrativa">Imagem ilustrativa</span>
+    </figure>
+    <p class="sub">O Tribunal de Justiça de São Paulo entendeu que esses adicionais devem ser calculados sobre os <strong>vencimentos integrais</strong>, ou seja, sobre o salário inteiro, e não só sobre uma parte dele.</p>
+    <a class="botao botao-principal botao-topo" href="https://wa.me/551637285886?text=Ol%C3%A1%2C%20vim%20pelo%20an%C3%BAncio%20e%20gostaria%20de%20atendimento%20sobre%20professores%20aposentados%20da%20rede%20estadual." rel="noopener">
+      <svg aria-hidden="true" focusable="false"><use href="#icone-whatsapp"/></svg>
+      <span>Quero que confiram o meu caso<small>Conversar pelo WhatsApp</small></span>
+    </a>
   </header>
 
   <main class="conteudo">
     <div class="explica">
-      <p>O <strong>quinquênio</strong> (Adicional por Tempo de Serviço) e a <strong>sexta-parte</strong> são adicionais pagos pelo tempo de trabalho.</p>
-      <p>Em muitos casos, o Estado faz a conta sobre só uma parte do salário, e não sobre o salário inteiro. Quando isso acontece, dá para pedir na Justiça a correção e as diferenças atrasadas dos últimos 5 anos.</p>
+      <p>O <strong>quinquênio</strong> (Adicional por Tempo de Serviço) é pago a cada 5 anos de trabalho, e a <strong>sexta-parte</strong>, depois de 20 anos.</p>
+      <p>Quando o Estado faz a conta sobre só uma parte do salário, dá para pedir na Justiça a correção e as diferenças atrasadas dos últimos 5 anos.</p>
     </div>
 
     <figure class="foto">
