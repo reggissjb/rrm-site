@@ -154,6 +154,31 @@
     }
     .rodape p { margin: 0 0 .35rem; }
     .rodape a { color: var(--ouro-claro); }
+
+    .ilustracao { display: block; width: 100%; max-width: 330px; margin: 1.75rem auto 0; }
+
+    .como { margin: 0 0 2rem; }
+    .como h2, .confira h2 {
+      font-family: var(--titulo);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--ouro-escuro);
+      margin: 0 0 .9rem;
+    }
+    .como ol { list-style: none; margin: 0; padding: 0; display: grid; gap: .8rem; }
+    .como li {
+      display: flex; align-items: center; gap: 1rem;
+      background: var(--cartao);
+      border: 1px solid var(--borda);
+      border-radius: 12px;
+      padding: .85rem 1rem;
+    }
+    .como svg { flex: none; width: 3.6rem; height: 3.6rem; }
+    .como strong { color: var(--tinta); }
+
+    .foto { margin: 0 0 1.5rem; }
+    .foto img { width: 100%; border-radius: 12px; border: 3px solid var(--preto); }
+    .foto figcaption { font-size: 1rem; color: var(--tinta-suave); text-align: center; margin-top: .5rem; }
   </style>
 </head>
 <body>
@@ -161,6 +186,50 @@
     <img src="/logo-rrm.png" width="1502" height="480" alt="RRM Advocacia · Réggis Ranger de Melo">
     <h1>Professores e professoras aposentados da rede estadual de São Paulo</h1>
     <p>O quinquênio e a sexta-parte do seu holerite podem estar sendo calculados sobre só uma parte do salário.</p>
+    <svg class="ilustracao" viewBox="0 0 340 230" role="img" aria-label="Ilustração: holerite sendo conferido com uma lupa, ao lado de livros e uma maçã">
+      <circle cx="170" cy="118" r="108" fill="#c9a35e" opacity=".16"/>
+      <circle cx="170" cy="118" r="80" fill="#c9a35e" opacity=".12"/>
+      <!-- livros -->
+      <rect x="26" y="182" width="118" height="22" rx="3" fill="#7a5a1f"/>
+      <rect x="32" y="186" width="106" height="3" fill="#e0c27e" opacity=".6"/>
+      <rect x="34" y="160" width="104" height="22" rx="3" fill="#2b2520"/>
+      <rect x="40" y="164" width="92" height="3" fill="#c9a35e" opacity=".8"/>
+      <rect x="22" y="138" width="112" height="22" rx="3" fill="#c9a35e"/>
+      <rect x="28" y="142" width="100" height="3" fill="#fffaf1" opacity=".7"/>
+      <!-- maçã -->
+      <path d="M78 104c-12-6-27 2-27 17 0 14 10 25 19 25 4 0 5-2 8-2s4 2 8 2c9 0 19-11 19-25 0-15-15-23-27-17Z" fill="#b8352d"/>
+      <path d="M66 112c-3 4-4 9-3 14" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".45" fill="none"/>
+      <path d="M78 104c0-6 2-11 6-14" stroke="#4a3523" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <path d="M84 96c6-6 15-5 17-3-3 6-11 8-17 3Z" fill="#4f8a3a"/>
+      <!-- holerite -->
+      <g transform="rotate(6 232 112)">
+        <rect x="160" y="24" width="140" height="178" rx="8" fill="#fffaf1" stroke="#e0d3bb" stroke-width="2"/>
+        <rect x="160" y="24" width="140" height="30" rx="8" fill="#2b2520"/>
+        <rect x="160" y="44" width="140" height="10" fill="#2b2520"/>
+        <text x="230" y="44" text-anchor="middle" font-family="Cinzel, serif" font-weight="700" font-size="14" fill="#e0c27e" letter-spacing="1.5">HOLERITE</text>
+        <g font-family="Source Sans 3, Arial, sans-serif" font-size="9.5" fill="#5b4f43">
+          <rect x="172" y="66" width="62" height="6" rx="3" fill="#d9ccb4"/><rect x="258" y="66" width="30" height="6" rx="3" fill="#d9ccb4"/>
+          <rect x="172" y="82" width="50" height="6" rx="3" fill="#d9ccb4"/><rect x="262" y="82" width="26" height="6" rx="3" fill="#d9ccb4"/>
+          <rect x="166" y="96" width="128" height="17" rx="4" fill="#e0c27e" opacity=".55"/>
+          <text x="172" y="108" font-weight="700" fill="#2b2520">QUINQUÊNIO</text><text x="288" y="108" text-anchor="end" font-weight="700" fill="#2b2520">?</text>
+          <rect x="166" y="117" width="128" height="17" rx="4" fill="#e0c27e" opacity=".55"/>
+          <text x="172" y="129" font-weight="700" fill="#2b2520">SEXTA-PARTE</text><text x="288" y="129" text-anchor="end" font-weight="700" fill="#2b2520">?</text>
+          <rect x="172" y="144" width="58" height="6" rx="3" fill="#d9ccb4"/><rect x="260" y="144" width="28" height="6" rx="3" fill="#d9ccb4"/>
+          <rect x="172" y="160" width="44" height="6" rx="3" fill="#d9ccb4"/><rect x="264" y="160" width="24" height="6" rx="3" fill="#d9ccb4"/>
+          <rect x="172" y="180" width="116" height="2" fill="#e0d3bb"/>
+        </g>
+      </g>
+      <!-- lupa -->
+      <circle cx="268" cy="126" r="27" fill="#ffffff" opacity=".25"/>
+      <circle cx="268" cy="126" r="27" fill="none" stroke="#2b2520" stroke-width="6.5"/>
+      <circle cx="268" cy="126" r="27" fill="none" stroke="#c9a35e" stroke-width="2.2"/>
+      <path d="M288 146 310 168" stroke="#2b2520" stroke-width="11" stroke-linecap="round"/>
+      <path d="M290 148 308 166" stroke="#c9a35e" stroke-width="3" stroke-linecap="round"/>
+      <path d="M254 113a18 18 0 0 1 11-6" stroke="#fff" stroke-width="3.5" stroke-linecap="round" fill="none" opacity=".8"/>
+      <!-- selo -->
+      <circle cx="304" cy="34" r="20" fill="#1d7a46"/>
+      <path d="M294 34.5l7 7 12-14" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
   </header>
 
   <main class="conteudo">
@@ -200,6 +269,30 @@
         <span>Conhecer o escritório<small>Site da RRM Advocacia</small></span>
       </a>
     </nav>
+
+    <section class="como" aria-labelledby="como-titulo">
+      <h2 id="como-titulo">Como funciona</h2>
+      <ol>
+        <li>
+          <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="32" cy="32" r="30" fill="#c9a35e" opacity=".22"/><rect x="21" y="12" width="22" height="40" rx="4" fill="#2b2520"/><rect x="24" y="17" width="16" height="27" rx="1.5" fill="#fffaf1"/><circle cx="32" cy="48" r="1.8" fill="#c9a35e"/><path d="M27 23h10M27 28h7" stroke="#1d7a46" stroke-width="2.4" stroke-linecap="round"/><path d="M38 33h12a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3h-5l-4 4v-4h-3a3 3 0 0 1-3-3v-6a3 3 0 0 1 3-3Z" fill="#1d7a46"/></svg>
+          <span><strong>Você manda uma mensagem</strong> pelo WhatsApp, com uma foto do holerite (se tiver).</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="32" cy="32" r="30" fill="#c9a35e" opacity=".22"/><rect x="14" y="12" width="28" height="38" rx="3" fill="#fffaf1" stroke="#2b2520" stroke-width="2.4"/><path d="M19 20h18M19 26h14M19 32h18" stroke="#c9a35e" stroke-width="2.4" stroke-linecap="round"/><circle cx="38" cy="38" r="9" fill="#fff" fill-opacity=".6" stroke="#2b2520" stroke-width="3.2"/><path d="M44.5 44.5 52 52" stroke="#2b2520" stroke-width="4.5" stroke-linecap="round"/></svg>
+          <span><strong>O advogado confere</strong> com calma se os adicionais estão calculados do jeito certo.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="32" cy="32" r="30" fill="#c9a35e" opacity=".22"/><path d="M14 18h36a4 4 0 0 1 4 4v18a4 4 0 0 1-4 4H30l-9 8v-8h-7a4 4 0 0 1-4-4V22a4 4 0 0 1 4-4Z" fill="#2b2520"/><path d="M23 31l6 6 12-13" fill="none" stroke="#e0c27e" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><strong>Você recebe a explicação</strong>, em palavras simples, se vale a pena entrar com a ação ou não.</span>
+        </li>
+      </ol>
+    </section>
+
+
+    <figure class="foto">
+      <img src="/professores/escritorio.webp" width="640" height="498" alt="Parede do escritório RRM Advocacia, com o logotipo Réggis Ranger de Melo Advocacia" loading="lazy" decoding="async">
+      <figcaption>Escritório em São Joaquim da Barra/SP · atendimento presencial ou à distância</figcaption>
+    </figure>
 
     <p class="aviso">Cada situação depende do cargo, da data de ingresso e das regras da aposentadoria. Por isso, nem todo caso tem diferença a receber.</p>
   </main>
