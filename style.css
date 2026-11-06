@@ -648,3 +648,94 @@ h2::after {
   .whatsapp-fixo { right: 1.5rem; bottom: 1.5rem; padding: 0 1.4rem 0 1.1rem; }
   .whatsapp-fixo-texto { display: inline; }
 }
+
+/* Passo a passo com imagens (como-baixar-holerite.html) */
+.tutorial {
+  list-style: none;
+  counter-reset: etapa;
+  margin: 2.5rem 0 0;
+  padding: 0;
+}
+.tutorial > li {
+  counter-increment: etapa;
+  margin: 0 0 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--linha);
+}
+.tutorial h3 {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  margin: 0 0 1rem;
+  font-size: 1.35rem;
+  line-height: 1.3;
+  color: var(--ouro-claro);
+}
+.tutorial h3::before {
+  content: counter(etapa);
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--ouro);
+  border-radius: 50%;
+  font-family: var(--fonte-titulo);
+  font-size: 1.25rem;
+  color: var(--ouro-claro);
+}
+.tutorial strong, .tutorial-aviso strong { color: var(--ouro-claro); font-weight: 600; }
+.tutorial-imagem { margin: 1.25rem 0 0; }
+.tutorial-imagem img {
+  width: auto;
+  max-height: 34rem;
+  margin: 0 auto;
+  border: 1px solid var(--linha);
+  border-radius: 6px;
+  background: #fff;
+}
+.tutorial-aviso {
+  margin: 2.5rem 0;
+  padding: 1.5rem 1.25rem;
+  border: 1px solid var(--linha);
+  border-radius: 6px;
+  background: var(--preto-madeira);
+}
+.tutorial-aviso h2 { font-size: clamp(1.35rem, 5vw, 1.6rem); margin-bottom: 1rem; }
+.tutorial-aviso .lista { margin-bottom: 0; }
+.tutorial-aviso .tutorial-imagem { margin-bottom: 1.25rem; }
+.tutorial-nota { font-size: 1rem; color: var(--texto-suave); }
+
+/* ---------- Páginas de leitura: topo, menu e rodapé escuros; texto em fundo claro ---------- */
+body.leitura main .secao {
+  --papel: #f6f1e7;
+  --papel-cartao: #fffaf1;
+  --papel-borda: #e0d3bb;
+  --tinta: #2b2520;
+  --tinta-suave: #5b4f43;
+  --ouro-escuro: #7a5a1f;
+  background: var(--papel);
+  color: var(--tinta);
+}
+body.leitura main .secao h2, body.leitura main .secao h3 { color: var(--ouro-escuro); }
+body.leitura main .secao h2::after { background: #b08a46; }
+body.leitura main .secao a:not(.botao) { color: var(--ouro-escuro); }
+body.leitura main .secao a:not(.botao):hover { color: #000; }
+body.leitura main .secao strong,
+body.leitura main .secao .tutorial strong,
+body.leitura main .secao .tutorial-aviso strong { color: var(--tinta); font-weight: 700; }
+body.leitura main .secao .lista li::before { background: #b08a46; }
+body.leitura main .secao .pergunta,
+body.leitura main .secao .tutorial-aviso {
+  background: var(--papel-cartao);
+  border-color: var(--papel-borda);
+}
+body.leitura main .secao .pergunta summary { color: var(--tinta); }
+body.leitura main .secao .pergunta summary:hover,
+body.leitura main .secao .pergunta[open] summary { color: var(--ouro-escuro); }
+body.leitura main .secao .pergunta[open] summary { border-bottom-color: var(--papel-borda); }
+body.leitura main .secao .pergunta summary::after { border-color: #b08a46; }
+body.leitura main .secao .tutorial > li { border-top-color: var(--papel-borda); }
+body.leitura main .secao .tutorial h3::before { border-color: #b08a46; color: var(--ouro-escuro); }
+body.leitura main .secao .tutorial-imagem img { border-color: var(--papel-borda); }
+body.leitura main .secao .tutorial-nota { color: var(--tinta-suave); }

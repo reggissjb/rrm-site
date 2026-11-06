@@ -1,5 +1,16 @@
 // RRM Advocacia — scripts mínimos: menu do celular, botão fixo do WhatsApp e mapa sob demanda
 (function () {
+  // Quem chega pelo link do anúncio (?origem=anuncio) envia uma mensagem de WhatsApp própria,
+  // para o escritório saber que o contato veio do anúncio pago
+  var mensagemAnuncio = document.body.getAttribute("data-whatsapp-anuncio");
+  if (mensagemAnuncio && /[?&]origem=anuncio(&|$)/.test(window.location.search)) {
+    var linksWhatsapp = document.querySelectorAll('a[href^="https://wa.me/"]');
+    for (var i = 0; i < linksWhatsapp.length; i++) {
+      var link = linksWhatsapp[i];
+      link.href = link.href.split("?")[0] + "?text=" + encodeURIComponent(mensagemAnuncio);
+    }
+  }
+
   // Altura real do cabeçalho fixo, usada para o título da seção não ficar escondido embaixo dele
   var cabecalho = document.querySelector(".cabecalho");
   var medirCabecalho = function () {
