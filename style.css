@@ -648,3 +648,60 @@ h2::after {
   .whatsapp-fixo { right: 1.5rem; bottom: 1.5rem; padding: 0 1.4rem 0 1.1rem; }
   .whatsapp-fixo-texto { display: inline; }
 }
+
+/* Passo a passo com imagens (como-baixar-holerite.html) */
+.tutorial {
+  list-style: none;
+  counter-reset: etapa;
+  margin: 2.5rem 0 0;
+  padding: 0;
+}
+.tutorial > li {
+  counter-increment: etapa;
+  margin: 0 0 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--linha);
+}
+.tutorial h3 {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  margin: 0 0 1rem;
+  font-size: 1.35rem;
+  line-height: 1.3;
+  color: var(--ouro-claro);
+}
+.tutorial h3::before {
+  content: counter(etapa);
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--ouro);
+  border-radius: 50%;
+  font-family: var(--fonte-titulo);
+  font-size: 1.25rem;
+  color: var(--ouro-claro);
+}
+.tutorial strong, .tutorial-aviso strong { color: var(--ouro-claro); font-weight: 600; }
+.tutorial-imagem { margin: 1.25rem 0 0; }
+.tutorial-imagem img {
+  width: auto;
+  max-height: 34rem;
+  margin: 0 auto;
+  border: 1px solid var(--linha);
+  border-radius: 6px;
+  background: #fff;
+}
+.tutorial-aviso {
+  margin: 2.5rem 0;
+  padding: 1.5rem 1.25rem;
+  border: 1px solid var(--linha);
+  border-radius: 6px;
+  background: var(--preto-madeira);
+}
+.tutorial-aviso h2 { font-size: clamp(1.35rem, 5vw, 1.6rem); margin-bottom: 1rem; }
+.tutorial-aviso .lista { margin-bottom: 0; }
+.tutorial-aviso .tutorial-imagem { margin-bottom: 1.25rem; }
+.tutorial-nota { font-size: 1rem; color: var(--texto-suave); }
