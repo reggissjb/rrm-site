@@ -705,3 +705,37 @@ h2::after {
 .tutorial-aviso .lista { margin-bottom: 0; }
 .tutorial-aviso .tutorial-imagem { margin-bottom: 1.25rem; }
 .tutorial-nota { font-size: 1rem; color: var(--texto-suave); }
+
+/* ---------- Páginas de leitura: topo, menu e rodapé escuros; texto em fundo claro ---------- */
+body.leitura main .secao {
+  --papel: #f6f1e7;
+  --papel-cartao: #fffaf1;
+  --papel-borda: #e0d3bb;
+  --tinta: #2b2520;
+  --tinta-suave: #5b4f43;
+  --ouro-escuro: #7a5a1f;
+  background: var(--papel);
+  color: var(--tinta);
+}
+body.leitura main .secao h2, body.leitura main .secao h3 { color: var(--ouro-escuro); }
+body.leitura main .secao h2::after { background: #b08a46; }
+body.leitura main .secao a:not(.botao) { color: var(--ouro-escuro); }
+body.leitura main .secao a:not(.botao):hover { color: #000; }
+body.leitura main .secao strong,
+body.leitura main .secao .tutorial strong,
+body.leitura main .secao .tutorial-aviso strong { color: var(--tinta); font-weight: 700; }
+body.leitura main .secao .lista li::before { background: #b08a46; }
+body.leitura main .secao .pergunta,
+body.leitura main .secao .tutorial-aviso {
+  background: var(--papel-cartao);
+  border-color: var(--papel-borda);
+}
+body.leitura main .secao .pergunta summary { color: var(--tinta); }
+body.leitura main .secao .pergunta summary:hover,
+body.leitura main .secao .pergunta[open] summary { color: var(--ouro-escuro); }
+body.leitura main .secao .pergunta[open] summary { border-bottom-color: var(--papel-borda); }
+body.leitura main .secao .pergunta summary::after { border-color: #b08a46; }
+body.leitura main .secao .tutorial > li { border-top-color: var(--papel-borda); }
+body.leitura main .secao .tutorial h3::before { border-color: #b08a46; color: var(--ouro-escuro); }
+body.leitura main .secao .tutorial-imagem img { border-color: var(--papel-borda); }
+body.leitura main .secao .tutorial-nota { color: var(--tinta-suave); }
